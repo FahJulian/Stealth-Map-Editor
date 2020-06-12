@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+											http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.fahjulian</groupId>
+	<artifactId>stealthmapeditor</artifactId>
+	<version>0.1.0</version>
+	<name>StealthMapEditor</name>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<lwjgl.version>3.2.3</lwjgl.version>
+		<joml.version>1.9.24</joml.version>
+		<lwjgl.natives>natives-linux</lwjgl.natives>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.fahjulian</groupId>
+			<artifactId>stealth</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>StealthMapEditor-0.0.1</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.github.fahjulian.stealthmapeditor.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<show>public</show>
+				</configuration>
+			</plugin>
+		</plugins>	
+	</build>
+
+</project>
