@@ -15,8 +15,7 @@ public class MapEditorScene extends AbstractScene
 
     public MapEditorScene()
     {
-        this.defaultTexture = new Texture2D(
-                "/home/julian/dev/java/Stealth/src/main/resources/textures/default_tile.png");
+        this.defaultTexture = new Texture2D("/home/julian/dev/java/Stealth/src/main/resources/textures/red.png");
         this.textures = new Texture2D[MAX_TEXTURES];
     }
 
@@ -24,30 +23,34 @@ public class MapEditorScene extends AbstractScene
     protected void onInit()
     {
         addTexture(defaultTexture);
-        addTexture(new Texture2D("/home/julian/dev/java/Stealth/src/main/resources/textures/player.png"));
-        add(new MapEditorLayer(10, 10, 100.0f, this));
+        add(new MapEditorLayer("/home/julian/dev/GeneratedMap.stealthMap.xml", this));
+        add(new MapEditorGUILayer(this));
     }
 
     void addTexture(Texture2D texture)
     {
-        int nextIndex = -1;
+        if (!texture.loadedSuccesfully())
+            return;
+
+        for (Texture2D addedTexture : textures)
+        {
+            if (addedTexture == null)
+                break;
+            if (addedTexture.equals(texture))
+                return;
+        }
+
         for (int i = 0; i < MAX_TEXTURES; i++)
         {
             if (textures[i] == null)
             {
-                nextIndex = i;
-                break;
+                textures[i] = texture;
+                Renderer2D.registerTexture(texture);
+                return;
             }
         }
 
-        if (nextIndex == -1)
-        {
-            Log.warn("(MapEditorLayer) Maximum amount of textures reached.");
-            return;
-        }
-
-        textures[nextIndex] = texture;
-        Renderer2D.registerTexture(texture);
+        Log.warn("(MapEditorLayer) Maximum amount of textures reached.");
     }
 
     Texture2D nextTexture(Texture2D currentTexture)
@@ -57,6 +60,11 @@ public class MapEditorScene extends AbstractScene
             return null;
 
         return textures[currentIndex == 16 ? 0 : currentIndex + 1];
+    }
+
+    Texture2D[] getTextures()
+    {
+        return textures;
     }
 
 }

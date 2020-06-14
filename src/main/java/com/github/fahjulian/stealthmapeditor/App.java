@@ -18,6 +18,6 @@ public class App extends AbstractApp
 
     public static void main(String... args)
     {
-        new App("Stealth Map Editor", 1000, 1000 / 16 * 9).run();
+        new App("Stealth Map Editor", 1024, 512).run();
     }
 }
