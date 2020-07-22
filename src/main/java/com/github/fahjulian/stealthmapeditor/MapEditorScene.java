@@ -1,70 +1,61 @@
 package com.github.fahjulian.stealthmapeditor;
 
-import java.util.Arrays;
+import static com.github.fahjulian.stealthmapeditor.Resources.DEFAULT_TEXTURE;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.fahjulian.stealth.core.scene.AbstractScene;
 import com.github.fahjulian.stealth.core.util.Log;
-import com.github.fahjulian.stealth.graphics.Renderer2D;
-import com.github.fahjulian.stealth.graphics.opengl.Texture2D;
+import com.github.fahjulian.stealth.graphics.Spritesheet;
+import com.github.fahjulian.stealth.graphics.renderer.Renderer2D;
+import com.github.fahjulian.stealth.tilemap.TileMap;
 
 public class MapEditorScene extends AbstractScene
 {
-    private static final int MAX_TEXTURES = 16;
-    final Texture2D defaultTexture;
-    private final Texture2D[] textures;
+    private static final int MAX_TEXTURES;
 
-    public MapEditorScene()
+    static
     {
-        this.defaultTexture = new Texture2D("/home/julian/dev/java/Stealth/src/main/resources/textures/red.png");
-        this.textures = new Texture2D[MAX_TEXTURES];
+        MAX_TEXTURES = 16;
+    }
+
+    private final TileMap map;
+    private final List<Spritesheet> spritesheets;
+
+    public MapEditorScene(TileMap map)
+    {
+        this.map = map;
+        this.spritesheets = new ArrayList<>();
+
+        this.addSpritesheet(DEFAULT_TEXTURE);
     }
 
     @Override
     protected void onInit()
     {
-        addTexture(defaultTexture);
-        add(new MapEditorLayer("/home/julian/dev/GeneratedMap.stealthMap.xml", this));
-        add(new MapEditorGUILayer(this));
+        for (int y = 0; y < this.map.getHeight(); y++)
+            for (int x = 0; x < this.map.getWidth(); x++)
+                addSpritesheet((Spritesheet) this.map.getTile(x, y).getSprite().getTexture()); // TODO: Change to sheet
+                                                                                               // if its only a texture
+
+        super.add(new MapEditorLayer(this.map, this));
+        super.add(new MapEditorGUILayer(this, this.spritesheets));
     }
 
-    void addTexture(Texture2D texture)
+    private void addSpritesheet(Spritesheet spritesheet)
     {
-        if (!texture.loadedSuccesfully())
+        if (spritesheets.contains(spritesheet))
             return;
 
-        for (Texture2D addedTexture : textures)
+        if (spritesheets.size() >= 16)
         {
-            if (addedTexture == null)
-                break;
-            if (addedTexture.equals(texture))
-                return;
+            Log.warn("(MapEditorScene) Can not add spritesheet %s: Maximum amount of textures is %d", spritesheet,
+                    MAX_TEXTURES);
+            return;
         }
 
-        for (int i = 0; i < MAX_TEXTURES; i++)
-        {
-            if (textures[i] == null)
-            {
-                textures[i] = texture;
-                Renderer2D.registerTexture(texture);
-                return;
-            }
-        }
-
-        Log.warn("(MapEditorLayer) Maximum amount of textures reached.");
+        Renderer2D.registerTexture(spritesheet);
+        spritesheets.add(spritesheet);
     }
-
-    Texture2D nextTexture(Texture2D currentTexture)
-    {
-        int currentIndex = Arrays.asList(textures).indexOf(currentTexture);
-        if (currentIndex == -1)
-            return null;
-
-        return textures[currentIndex == 16 ? 0 : currentIndex + 1];
-    }
-
-    Texture2D[] getTextures()
-    {
-        return textures;
-    }
-
 }
