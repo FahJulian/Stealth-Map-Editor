@@ -15,22 +15,19 @@
         <spriteHeight>16</spriteHeight>
         <padding>0</padding>
     </texture>
-    <texture>
-        <type>spritesheet</type>
-        <path>/home/julian/dev/java/StealthMapEditor/src/main/resources/textures/default.png</path>
-        <width>1</width>
-        <height>1</height>
-        <spriteWidth>16</spriteWidth>
-        <spriteHeight>16</spriteHeight>
-        <padding>0</padding>
-    </texture>
 </textures>
 
 <tiles>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>14</sheetX>
+        <sheetX>2</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>2</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
@@ -48,49 +45,13 @@
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>12</sheetX>
+        <sheetX>2</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>2</sheetX>
-        <sheetY>2</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>5</sheetX>
-        <sheetY>2</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>23</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>14</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
@@ -108,54 +69,6 @@
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>12</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>3</sheetX>
-        <sheetY>2</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>5</sheetX>
-        <sheetY>2</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>14</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
         <sheetX>2</sheetX>
         <sheetY>0</sheetY>
     </tile>
@@ -163,120 +76,78 @@
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>2</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>12</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>0</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>14</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>2</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>2</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>12</sheetX>
-        <sheetY>0</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>0</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>0</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>1</sheetX>
-        <sheetY>1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>0</textureIndex>
-        <sheetX>0</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>29</sheetX>
+        <sheetX>1</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>29</sheetX>
+        <sheetX>1</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>1</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>1</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>1</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>1</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>28</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>28</sheetX>
         <sheetY>0</sheetY>
     </tile>
     <tile>
@@ -300,31 +171,151 @@
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>24</sheetX>
+        <sheetX>31</sheetX>
         <sheetY>2</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>25</sheetX>
+        <sheetX>31</sheetX>
         <sheetY>2</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
         <sheetX>16</sheetX>
-        <sheetY>2</sheetY>
-    </tile>
-    <tile>
-        <spriteType>spritesheet</spriteType>
-        <textureIndex>1</textureIndex>
-        <sheetX>0</sheetX>
-        <sheetY>-1</sheetY>
+        <sheetY>0</sheetY>
     </tile>
     <tile>
         <spriteType>spritesheet</spriteType>
         <textureIndex>0</textureIndex>
-        <sheetX>0</sheetX>
+        <sheetX>16</sheetX>
         <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>28</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>28</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>24</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>24</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>24</sheetX>
+        <sheetY>0</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
+    </tile>
+    <tile>
+        <spriteType>spritesheet</spriteType>
+        <textureIndex>0</textureIndex>
+        <sheetX>31</sheetX>
+        <sheetY>2</sheetY>
     </tile>
 </tiles>

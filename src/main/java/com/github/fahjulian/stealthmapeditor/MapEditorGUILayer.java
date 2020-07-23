@@ -13,6 +13,8 @@ import com.github.fahjulian.stealth.graphics.Sprite;
 import com.github.fahjulian.stealth.graphics.Spritesheet;
 import com.github.fahjulian.stealth.graphics.renderer.Renderer2D;
 
+import org.joml.Vector3f;
+
 public class MapEditorGUILayer extends AbstractLayer<MapEditorScene>
 {
     private enum State
@@ -29,6 +31,8 @@ public class MapEditorGUILayer extends AbstractLayer<MapEditorScene>
     private static final float POS_X = Window.get().getWidth() - WIDTH - MARGIN;
     private static final float POS_Y = MARGIN;
     private static final float POS_Z = 2.0f;
+
+    private static final Vector3f TOOLS_POS = new Vector3f(MARGIN, Window.get().getHeight() - MARGIN, 2.0f);
 
     private final List<Spritesheet> spritesheets;
     private Spritesheet currentSpritesheet;
@@ -54,6 +58,16 @@ public class MapEditorGUILayer extends AbstractLayer<MapEditorScene>
     private void onRender(RenderEvent event)
     {
         Renderer2D.drawStaticRectangle(POS_X, POS_Y, POS_Z, WIDTH, HEIGHT, Color.LIGHT_GREY);
+
+        for (int i = 0; i < Tool.getAll().size(); i++)
+        {
+            Renderer2D.drawStaticRectangle(TOOLS_POS.x,
+                    TOOLS_POS.y - TEXTURE_SIZE - i * (TEXTURE_SIZE + TEXTURE_PADDING), TOOLS_POS.z, TEXTURE_SIZE,
+                    TEXTURE_SIZE, Color.LIGHT_GREY);
+            Renderer2D.drawStaticRectangle(TOOLS_POS.x + 5.f,
+                    TOOLS_POS.y + 5.f - TEXTURE_SIZE - i * (TEXTURE_SIZE + TEXTURE_PADDING), TOOLS_POS.z + 0.1f,
+                    TEXTURE_SIZE - 10.f, TEXTURE_SIZE - 10.f, Tool.getAll().get(i).getSprite());
+        }
 
         if (state == State.SPRITESHEET_SELECTION)
         {
@@ -89,12 +103,18 @@ public class MapEditorGUILayer extends AbstractLayer<MapEditorScene>
 
     private void onMouseButonPressed(MouseButtonPressedEvent event)
     {
-        if (!isOnPane(event.getX(), event.getY()))
+        if (!(isOnPane(event.getX(), event.getY()) || isOnToolsPane(event.getX(), event.getY())))
             return;
 
         if (event.getButton() == Button.LEFT)
         {
-            if (state == State.SPRITESHEET_SELECTION)
+            if (isOnToolsPane(event.getX(), event.getY()))
+            {
+                Tool newTool = getToolAt(event.getX(), event.getY());
+                if (newTool != null)
+                    new ToolSwitchEvent(newTool);
+            }
+            else if (state == State.SPRITESHEET_SELECTION)
             {
                 currentSpritesheet = getSheetAt(event.getX(), event.getY());
                 if (currentSpritesheet != null)
@@ -114,9 +134,28 @@ public class MapEditorGUILayer extends AbstractLayer<MapEditorScene>
         }
     }
 
+    private boolean isOnToolsPane(float x, float y)
+    {
+        return x > TOOLS_POS.x && x < TOOLS_POS.x + TEXTURE_SIZE && y < TOOLS_POS.y
+                && y > TOOLS_POS.y - Tool.getAll().size() * (TEXTURE_SIZE + TEXTURE_PADDING) - TEXTURE_PADDING;
+    }
+
     private boolean isOnPane(float x, float y)
     {
         return x > POS_X && x < POS_X + WIDTH && y > POS_Y && y < POS_Y + HEIGHT;
+    }
+
+    private Tool getToolAt(float x, float y)
+    {
+        for (int i = 0; i < Tool.getAll().size(); i++)
+        {
+            float toolY = TOOLS_POS.y - TEXTURE_SIZE - i * (TEXTURE_SIZE + TEXTURE_PADDING);
+
+            if (y >= toolY && y < toolY + TEXTURE_SIZE)
+                return Tool.getAll().get(i);
+        }
+
+        return null;
     }
 
     private Spritesheet getSheetAt(float x, float y)

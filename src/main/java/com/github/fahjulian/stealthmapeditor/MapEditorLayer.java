@@ -1,39 +1,48 @@
 package com.github.fahjulian.stealthmapeditor;
 
+import static com.github.fahjulian.stealthmapeditor.Resources.CAMERA_CONTROLLER;
+
 import javax.swing.JOptionPane;
 
 import com.github.fahjulian.stealth.core.Window;
+import com.github.fahjulian.stealth.core.entity.Transform;
 import com.github.fahjulian.stealth.core.scene.AbstractLayer;
 import com.github.fahjulian.stealth.events.application.RenderEvent;
 import com.github.fahjulian.stealth.events.key.AKeyEvent.Key;
 import com.github.fahjulian.stealth.events.key.KeyPressedEvent;
 import com.github.fahjulian.stealth.events.mouse.AMouseEvent.Button;
 import com.github.fahjulian.stealth.events.mouse.MouseButtonPressedEvent;
+import com.github.fahjulian.stealth.events.mouse.MouseDraggedEvent;
+import com.github.fahjulian.stealth.graphics.Sprite;
 import com.github.fahjulian.stealth.graphics.renderer.Renderer2D;
 import com.github.fahjulian.stealth.tilemap.Tile;
 import com.github.fahjulian.stealth.tilemap.TileMap;
 
-import org.joml.Vector2i;
-
 public class MapEditorLayer extends AbstractLayer<MapEditorScene>
 {
     private final TileMap map;
-    private final Vector2i selectedTilePos;
+    private Sprite sprite;
+    private Tool tool;
 
     public MapEditorLayer(TileMap map, MapEditorScene scene)
     {
         super(scene);
         this.map = map;
-        this.selectedTilePos = new Vector2i(0, 0);
+        this.tool = Tool.PENCIL;
     }
 
     @Override
     protected void onInit()
     {
+        add(CAMERA_CONTROLLER.create("Main camera controller",
+                new Transform(Window.get().getWidth() / 2, Window.get().getHeight() / 2)));
+
         super.registerEventListener(RenderEvent.class, this::onRender);
         super.registerEventListener(SpriteSwitchEvent.class, this::onSpriteSwitch);
         super.registerEventListener(KeyPressedEvent.class, this::onKeyPressed);
         super.registerEventListener(MouseButtonPressedEvent.class, this::onMouseButtonPressed);
+        super.registerEventListener(ToolSwitchEvent.class, this::onToolSwitch);
+        super.registerEventListener(MouseDraggedEvent.class, this::onMouseDragged);
     }
 
     private void onRender(RenderEvent event)
@@ -43,12 +52,12 @@ public class MapEditorLayer extends AbstractLayer<MapEditorScene>
 
     private void onSpriteSwitch(SpriteSwitchEvent event)
     {
-        Tile selectedTile = map.getTile(selectedTilePos.x, selectedTilePos.y);
-        if (selectedTile == null)
-            return;
+        sprite = event.getSprite();
+    }
 
-        selectedTile.setSprite(event.getSprite());
-        map.setTile(selectedTilePos.x, selectedTilePos.y, selectedTile);
+    private void onToolSwitch(ToolSwitchEvent event)
+    {
+        this.tool = event.getTool();
     }
 
     private void onKeyPressed(KeyPressedEvent event)
@@ -68,9 +77,40 @@ public class MapEditorLayer extends AbstractLayer<MapEditorScene>
     {
         if (event.getButton() == Button.LEFT)
         {
-            this.selectedTilePos.set((int) (event.getX() / map.getTileSize()),
-                    (int) (event.getY() / map.getTileSize()));
+            if (tool == Tool.BRUSH || tool == Tool.PENCIL)
+            {
+                int tileX = (int) (event.getX() / map.getTileSize()), tileY = (int) (event.getY() / map.getTileSize());
+                switchSpriteOfTileAt(tileX, tileY);
+            }
+
             super.blockEvent(MouseButtonPressedEvent.class);
+        }
+    }
+
+    private void onMouseDragged(MouseDraggedEvent event)
+    {
+        if (event.getButton() == Button.LEFT)
+        {
+            if (tool == Tool.BRUSH)
+            {
+                int tileX = (int) (event.getX() / map.getTileSize()), tileY = (int) (event.getY() / map.getTileSize());
+                switchSpriteOfTileAt(tileX, tileY);
+            }
+
+            super.blockEvent(MouseDraggedEvent.class);
+        }
+    }
+
+    private void switchSpriteOfTileAt(int tileX, int tileY)
+    {
+        if (sprite != null)
+        {
+            Tile tile = map.getTile(tileX, tileY);
+            if (tile != null)
+            {
+                tile.setSprite(sprite);
+                map.setTile(tileX, tileY, tile);
+            }
         }
     }
 }
